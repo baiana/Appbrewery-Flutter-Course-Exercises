@@ -11,10 +11,8 @@ void main() {
       ),
       body: Center(
         child: Image(
-          image: NetworkImage(
-              "https://i.pinimg.com/originals/53/a3/58/53a358b2538861e52f68a82a2378b190.gif"),
-        ),
+          image: AssetImage("images/ysric.gif"),
       ),
     ),
-  ));
+  )));
 }
