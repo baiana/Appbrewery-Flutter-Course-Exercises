@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.blueGrey[900],
         body: SafeArea(
             child: Column(
           children: <Widget>[
@@ -23,8 +23,9 @@ class MyApp extends StatelessWidget {
             Text(
               "Ana luísa Dias",
               style: TextStyle(
+                  letterSpacing: 2,
                   fontSize: 26,
-                  color: Colors.white,
+                  color: Colors.blueGrey[50],
                   fontWeight: FontWeight.normal,
                   fontFamily: "Bebas neue"),
             ),
@@ -32,8 +33,9 @@ class MyApp extends StatelessWidget {
               "Mobile Developer".toUpperCase(),
               style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w100,
+                  color: Colors.blueGrey[100],
+                  letterSpacing: 2.5,
+                  fontWeight: FontWeight.w300,
                   fontFamily: "Source Sans"),
             ),
           ],
