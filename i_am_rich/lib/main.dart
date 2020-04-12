@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Scaffold(
-      backgroundColor: Colors.blueGrey[200],
-      appBar: AppBar(
+      home: Scaffold(
+    backgroundColor: Colors.blueGrey[200],
+        appBar: AppBar(
         title: Text("Eu sou Rica"),
-        centerTitle: true,
-        backgroundColor: Colors.blueGrey[900],
-      ),
+         centerTitle: true,
+      backgroundColor: Colors.blueGrey[900],
+    ),
       body: Center(
-        child: Image(
-          image: AssetImage("images/ysric.gif"),
+      child: Image(
+        image: AssetImage("images/ysric.gif"),
       ),
     ),
   )));
