@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -38,9 +39,35 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                   fontFamily: "Source Sans"),
             ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 22,horizontal: 28),
+              padding: EdgeInsets.all(8),
+              color: Colors.blueGrey[100],
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.phone_iphone,
+                    size: 20,
+                    color: Colors.blueGrey[900],
+                  ),
+                  SizedBox(width: 16),
+                  Text(
+                    "+555 00 8800-0099",
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.blueGrey[900],
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
+                        fontFamily: "Source Sans"),
+                  )
+                ],
+              ),
+            )
           ],
         )),
       ),
     );
   }
+
+
 }
