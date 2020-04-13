@@ -13,6 +13,8 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.blueGrey[900],
         body: SafeArea(
             child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             CircleAvatar(
               radius: 64,
@@ -39,35 +41,34 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                   fontFamily: "Source Sans"),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 22,horizontal: 28),
-              padding: EdgeInsets.all(8),
-              color: Colors.blueGrey[100],
-              child: Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.phone_iphone,
-                    size: 20,
-                    color: Colors.blueGrey[900],
-                  ),
-                  SizedBox(width: 16),
-                  Text(
-                    "+555 00 8800-0099",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.blueGrey[900],
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 2,
-                        fontFamily: "Source Sans"),
-                  )
-                ],
-              ),
-            )
+            SizedBox(height: 16),
+            createNewUserDataCard(Icons.phone_iphone, "+555 00 8800-0099"),
+            createNewUserDataCard(Icons.alternate_email, "anadias@email.com"),
+            createNewUserDataCard(Icons.code, "@Baiana (Github)")
           ],
         )),
       ),
     );
   }
 
-
+  Card createNewUserDataCard(IconData icon, String text) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 28),
+      child: ListTile(
+        leading: Icon(
+          icon,
+          color: Colors.blueGrey[900],
+        ),
+        title: Text(
+          text,
+          style: TextStyle(
+              fontSize: 18,
+              color: Colors.blueGrey[900],
+              fontWeight: FontWeight.w400,
+              wordSpacing: 2,
+              fontFamily: "Source Sans"),
+        ),
+      ),
+    );
+  }
 }
