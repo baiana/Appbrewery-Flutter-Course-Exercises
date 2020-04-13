@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
             CircleAvatar(
               radius: 64,
               backgroundImage: NetworkImage(
-                  "https://avatars1.githubusercontent.com/u/18560467?s=460&u=779e0ca919ea9b6a737422786443e03b97ddce09&v=4'"),
+                  "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png"),
               backgroundColor: Colors.yellow[200],
             ),
             SizedBox(height: 12),
             Text(
-              "Ana luísa Dias",
+              "User name",
               style: TextStyle(
                   letterSpacing: 2,
                   fontSize: 26,
@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
               child: Divider(color: Colors.blueGrey.shade100),
             ),
             createNewUserDataCard(Icons.phone_iphone, "+555 00 0000-0000"),
-            createNewUserDataCard(Icons.alternate_email, "anadias@email.com"),
-            createNewUserDataCard(Icons.code, "@Baiana (Github)")
+            createNewUserDataCard(Icons.alternate_email, "user@email.com"),
+            createNewUserDataCard(Icons.code, "@user (Github)")
           ],
         )),
       ),
