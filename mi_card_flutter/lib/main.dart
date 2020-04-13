@@ -41,8 +41,12 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                   fontFamily: "Source Sans"),
             ),
-            SizedBox(height: 16),
-            createNewUserDataCard(Icons.phone_iphone, "+555 00 8800-0099"),
+            SizedBox(
+              height: 20,
+              width: 150,
+              child: Divider(color: Colors.blueGrey.shade100),
+            ),
+            createNewUserDataCard(Icons.phone_iphone, "+555 00 0000-0000"),
             createNewUserDataCard(Icons.alternate_email, "anadias@email.com"),
             createNewUserDataCard(Icons.code, "@Baiana (Github)")
           ],
