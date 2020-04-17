@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(
       MaterialApp(
@@ -27,10 +29,34 @@ class Ball extends StatefulWidget {
 }
 
 class _BallState extends State<Ball> {
+  bool _visible = true;
+  double opacity = 1;
+  int ballAnswer = 1;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Image.asset('images/ball1.png'),
+    opacity = _visible ? 1.0 : 0.0;
+    return AnimatedOpacity(
+      opacity: opacity,
+      duration: Duration(milliseconds: 300),
+      onEnd: displayAnswer,
+      child: Center(
+        child: FlatButton(
+          child: Image.asset('images/ball$ballAnswer.png'),
+          onPressed: () {
+            setState(() {
+              _visible = false;
+            });
+          },
+        ),
+      ),
     );
+  }
+
+  void displayAnswer() {
+    setState(() {
+      ballAnswer = Random().nextInt(5) + 1;
+      _visible = true;
+    });
   }
 }
