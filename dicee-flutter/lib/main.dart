@@ -8,7 +8,7 @@ void main() {
       home: Scaffold(
         backgroundColor: Colors.red.shade900,
         appBar: AppBar(
-          title: Text('Dicee'),
+          title: Text('Dados'),
           backgroundColor: Colors.red.shade500,
         ),
         body: DicePage(),
@@ -48,7 +48,7 @@ class _DicePageState extends State<DicePage> {
     );
   }
 
-  void generateRandomDiceNumbers() {
+  void rollDices() {
     setState(() {
       leftDiceNumber = Random().nextInt(6) + 1;
       rightDiceNumber = Random().nextInt(6) + 1;
