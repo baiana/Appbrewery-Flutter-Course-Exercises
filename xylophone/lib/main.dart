@@ -19,30 +19,32 @@ class XylophoneApp extends StatelessWidget {
 }
 
 class XylophonePage extends StatelessWidget {
-  final player = AudioCache();
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        displayKey(1, Colors.red, player),
-        displayKey(2, Colors.orangeAccent, player),
-        displayKey(3, Colors.yellow, player),
-        displayKey(4, Colors.green, player),
-        displayKey(5, Colors.green.shade900, player),
-        displayKey(6, Colors.lightBlue, player),
-        displayKey(7, Colors.purpleAccent, player),
+        displayKey(1, Colors.red),
+        displayKey(2, Colors.orangeAccent),
+        displayKey(3, Colors.yellow),
+        displayKey(4, Colors.green),
+        displayKey(5, Colors.green.shade900),
+        displayKey(6, Colors.lightBlue),
+        displayKey(7, Colors.purpleAccent),
       ],
     );
   }
 
-  Expanded displayKey(int keyNumber, Color color, AudioCache player) {
+  void playSound(String sound) {
+    AudioCache().play(sound);
+  }
+
+  Expanded displayKey(int keyNumber, Color color) {
     return Expanded(
       child: FlatButton(
         color: color,
         onPressed: () {
-          player.play('note$keyNumber.wav');
+          playSound('note$keyNumber.wav');
         },
       ),
     );
