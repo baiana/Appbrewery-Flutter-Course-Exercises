@@ -38,6 +38,9 @@ class _QuizPageState extends State<QuizPage> {
   List<String> questions = [
     'You can lead a cow down stairs but not up stairs.',
     'Approximately one quarter of human bones are in the feet.',
+    'A slug\'s blood is green.',
+    'You can lead a cow down stairs but not up stairs.',
+    'Approximately one quarter of human bones are in the feet.',
     'A slug\'s blood is green.'
   ];
   int questionNumber = 0;
@@ -78,11 +81,8 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                setState(() {
-                  scoreKeeper.add(right);
-                });
-
-                //The user picked true.
+                onQuestionResponse(true);
+                //The user picked false.
               },
             ),
           ),
@@ -100,9 +100,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                setState(() {
-                  scoreKeeper.add(wrong);
-                });
+                onQuestionResponse(false);
                 //The user picked false.
               },
               onLongPress: () {
@@ -120,6 +118,26 @@ class _QuizPageState extends State<QuizPage> {
         )
       ],
     );
+  }
+
+  void onQuestionResponse(bool response) {
+    setState(() {
+      if (questions.length > questionNumber + 1) {
+        displayNextQuestion(response);
+      } else {
+        resetQuestions();
+      }
+    });
+  }
+
+  void displayNextQuestion(bool response) {
+    questionNumber++;
+    scoreKeeper.add(response ? right : wrong);
+  }
+
+  void resetQuestions() {
+    questionNumber = 0;
+    scoreKeeper.clear();
   }
 }
 
