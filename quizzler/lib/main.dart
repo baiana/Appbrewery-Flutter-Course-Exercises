@@ -39,10 +39,8 @@ class _QuizPageState extends State<QuizPage> {
     'You can lead a cow down stairs but not up stairs.',
     'Approximately one quarter of human bones are in the feet.',
     'A slug\'s blood is green.',
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.'
   ];
+  List<bool> answers = [false, true, true];
   int questionNumber = 0;
 
   @override
@@ -121,23 +119,26 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   void onQuestionResponse(bool response) {
-    setState(() {
-      if (questions.length > questionNumber + 1) {
-        displayNextQuestion(response);
-      } else {
-        resetQuestions();
-      }
-    });
+    if (questionNumber + 1 < questions.length) {
+      displayNextQuestion(response);
+      print("Question number after $questionNumber < ${questions.length}");
+    } else {
+      resetQuestions();
+    }
   }
 
   void displayNextQuestion(bool response) {
-    questionNumber++;
-    scoreKeeper.add(response ? right : wrong);
+    setState(() {
+      questionNumber++;
+      scoreKeeper.add(response ? right : wrong);
+    });
   }
 
   void resetQuestions() {
-    questionNumber = 0;
-    scoreKeeper.clear();
+    setState(() {
+      questionNumber = 0;
+      scoreKeeper.clear();
+    });
   }
 }
 
