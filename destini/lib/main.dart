@@ -45,7 +45,7 @@ class _StoryPageState extends State<StoryPage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 23.0,
-                      backgroundColor: Colors.white24,
+                      backgroundColor: Colors.black45,
                       color: Colors.white,
                     ),
                   ),
@@ -62,7 +62,7 @@ class _StoryPageState extends State<StoryPage> {
                     //Choice 1 made by user.
                     //TODO: Step 18 - Call the nextStory() method from storyBrain and pass the number 1 as the choice made by the user.
                   },
-                  color: Colors.deepPurple,
+                  color: Colors.blueGrey[800],
                   child: Text(
                     storyManager.getFistChoice(),
                     textAlign: TextAlign.center,
@@ -79,18 +79,21 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 //TODO: Step 26 - Use a Flutter Visibility Widget to wrap this FlatButton.
                 //TODO: Step 28 - Set the "visible" property of the Visibility Widget to equal the output from the buttonShouldBeVisible() method in the storyBrain.
-                child: FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      storyManager.nextStory(2);
-                    });
-                  },
-                  color: Colors.deepPurpleAccent,
-                  child: Text(
-                    storyManager.getSecondChoice(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18.0,
+                child: Visibility(
+                  visible: storyManager.displaySecondChoice(),
+                  child: FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        storyManager.nextStory(2);
+                      });
+                    },
+                    color: Colors.grey[800],
+                    child: Text(
+                      storyManager.getSecondChoice(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                 ),

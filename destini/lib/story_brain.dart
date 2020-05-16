@@ -47,6 +47,8 @@ class StoryBrain {
 
   String getSecondChoice() => _storyData[_storyIndex].choice2;
 
+  bool displaySecondChoice()=> _storyIndex <3;
+
   void nextStory(int choice) {
     if (_storyIndex < 3) {
       if (choice == 1) {
