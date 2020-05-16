@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/question.dart';
 import 'package:quizzler/quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() => runApp(Quizzler());
 
@@ -38,6 +39,7 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Icon> scoreKeeper = [];
   QuizBrain quizManager = QuizBrain();
+  int score = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -117,10 +119,22 @@ class _QuizPageState extends State<QuizPage> {
   void onQuestionResponse(bool response) {
     setState(() {
       bool answer = quizManager.getQuestionAnswer();
-      quizManager.nextQuestion();
+      quizManager.nextQuestion(onQuizEnd: displayFinalScore);
       scoreKeeper.add(response == answer ? right : wrong);
+      if (response == answer) {
+        score++;
+      }
     });
+  }
 
+  void displayFinalScore() {
+    Alert(
+        context: context,
+        title: "Fim de Jogo",
+        type: AlertType.success,
+        desc: "Você acertou $score questões!",
+        buttons: []).show();
+    scoreKeeper.clear();
   }
 }
 

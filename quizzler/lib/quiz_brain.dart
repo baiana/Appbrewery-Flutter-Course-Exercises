@@ -32,8 +32,15 @@ class QuizBrain {
   ];
 
   String getQuestionText() => _questionsBank[_questionNumber].text;
+
   bool getQuestionAnswer() => _questionsBank[_questionNumber].questionAnswer;
-  void nextQuestion(){
-    (_questionNumber < _questionsBank.length-1)? _questionNumber++:_questionNumber = 0;
+
+  void nextQuestion({Function() onQuizEnd}) {
+    if (_questionNumber < _questionsBank.length - 1) {
+      _questionNumber++;
+    } else {
+      _questionNumber = 0;
+      onQuizEnd();
+    }
   }
 }
