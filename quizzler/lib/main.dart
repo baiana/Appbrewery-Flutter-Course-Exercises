@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/question.dart';
+import 'package:quizzler/quiz_brain.dart';
 
 void main() => runApp(Quizzler());
 
@@ -36,14 +37,7 @@ class _QuizPageState extends State<QuizPage> {
   );
 
   List<Icon> scoreKeeper = [];
-  List<Question> questions = [
-    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(
-        q: 'Approximately one quarter of human bones are in the feet.',
-        a: true),
-    Question(q: 'A slug\'s blood is green.', a: false),
-  ];
-  int questionNumber = 0;
+  QuizBrain quizManager = QuizBrain();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +51,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNumber].text,
+                quizManager.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -121,26 +115,12 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   void onQuestionResponse(bool response) {
-    if (questionNumber + 1 < questions.length) {
-      displayNextQuestion(response == questions[questionNumber].questionAnswer);
-      print("Question number after $questionNumber < ${questions.length}");
-    } else {
-      resetQuestions();
-    }
-  }
-
-  void displayNextQuestion(bool response) {
     setState(() {
-      questionNumber++;
-      scoreKeeper.add(response ? right : wrong);
+      bool answer = quizManager.getQuestionAnswer();
+      quizManager.nextQuestion();
+      scoreKeeper.add(response == answer ? right : wrong);
     });
-  }
 
-  void resetQuestions() {
-    setState(() {
-      questionNumber = 0;
-      scoreKeeper.clear();
-    });
   }
 }
 
