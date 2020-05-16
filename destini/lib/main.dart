@@ -41,9 +41,12 @@ class _StoryPageState extends State<StoryPage> {
                 child: Center(
                   child: Text(
                     //TODO: Step 10 - use the storyBrain to get the first story title and display it in this Text Widget.
-                    'Story text will go here.',
+                    storyManager.getStory(),
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 25.0,
+                      fontSize: 23.0,
+                      backgroundColor: Colors.white24,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -52,15 +55,19 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: FlatButton(
                   onPressed: () {
+                    setState(() {
+                      storyManager.nextStory(1);
+                    });
+
                     //Choice 1 made by user.
                     //TODO: Step 18 - Call the nextStory() method from storyBrain and pass the number 1 as the choice made by the user.
                   },
-                  color: Colors.red,
+                  color: Colors.deepPurple,
                   child: Text(
-                    //TODO: Step 13 - Use the storyBrain to get the text for choice 1.
-                    'Choice 1',
+                    storyManager.getFistChoice(),
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 18.0,
                     ),
                   ),
                 ),
@@ -74,15 +81,16 @@ class _StoryPageState extends State<StoryPage> {
                 //TODO: Step 28 - Set the "visible" property of the Visibility Widget to equal the output from the buttonShouldBeVisible() method in the storyBrain.
                 child: FlatButton(
                   onPressed: () {
-                    //Choice 2 made by user.
-                    //TODO: Step 19 - Call the nextStory() method from storyBrain and pass the number 2 as the choice made by the user.
+                    setState(() {
+                      storyManager.nextStory(2);
+                    });
                   },
-                  color: Colors.blue,
+                  color: Colors.deepPurpleAccent,
                   child: Text(
-                    //TODO: Step 14 - Use the storyBrain to get the text for choice 2.
-                    'Choice 2',
+                    storyManager.getSecondChoice(),
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 18.0,
                     ),
                   ),
                 ),
